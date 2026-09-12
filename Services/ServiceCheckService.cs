@@ -8,6 +8,8 @@ public static class ServiceCheckService
 {
     public static IEnumerable<DiagnosticCheck> GetChecks()
     {
+        var checks = new List<DiagnosticCheck>();
+
         foreach (var serviceName in new[] { "RapiMgr", "WcesComm" })
         {
             ServiceController? sc = null;
@@ -15,15 +17,15 @@ public static class ServiceCheckService
             {
                 sc = new ServiceController(serviceName);
                 var status = sc.Status;
-                yield return new("WINDOWS MOBILE", serviceName,
+                checks.Add(new("WINDOWS MOBILE", serviceName,
                     status == ServiceControllerStatus.Running ? CheckState.Pass : CheckState.Warning,
                     status.ToString(),
-                    status == ServiceControllerStatus.Running ? "Service is running." : "Service exists but is not running.");
+                    status == ServiceControllerStatus.Running ? "Service is running." : "Service exists but is not running."));
             }
             catch
             {
-                yield return new("WINDOWS MOBILE", serviceName, CheckState.Fail, "Not found",
-                    "Legacy Windows Mobile service is not installed or cannot be queried.");
+                checks.Add(new("WINDOWS MOBILE", serviceName, CheckState.Fail, "Not found",
+                    "Legacy Windows Mobile service is not installed or cannot be queried."));
             }
             finally
             {
@@ -31,11 +33,13 @@ public static class ServiceCheckService
             }
 
             var splitValue = ReadDword($@"SYSTEM\CurrentControlSet\Services\{serviceName}", "SvcHostSplitDisable");
-            yield return new("WINDOWS MOBILE", $"{serviceName} SvcHostSplitDisable",
+            checks.Add(new("WINDOWS MOBILE", $"{serviceName} SvcHostSplitDisable",
                 splitValue == 1 ? CheckState.Pass : CheckState.Info,
                 splitValue?.ToString() ?? "Not set",
-                splitValue == 1 ? "Legacy service-host split compatibility value is enabled." : "Value is not set to 1. This is informational; the working stack may not require it.");
+                splitValue == 1 ? "Legacy service-host split compatibility value is enabled." : "Value is not set to 1. This is informational; the working stack may not require it."));
         }
+
+        return checks;
     }
 
     private static int? ReadDword(string path, string name)
