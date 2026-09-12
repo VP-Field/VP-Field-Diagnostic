@@ -1,0 +1,32 @@
+VP FIELD DIAGNOSTIC — END USER NOTICE AND DISCLAIMER
+Version 0.1 — Draft for Alpha testing
+
+PLEASE READ THESE TERMS BEFORE INSTALLING OR USING THE SOFTWARE.
+
+By selecting "I accept the agreement" and continuing installation, you acknowledge that you have read and accepted these terms. If you do not accept them, select "I do not accept the agreement". Installation must then stop and the Software must not be installed through this installer.
+
+1. PURPOSE
+VP Field Diagnostic is an independent diagnostic utility intended to inspect the Windows connection environment used with supported field controllers and to report compatibility information for VP Field Sync.
+
+2. FREE SOFTWARE
+The Software is provided without charge. Source-code licensing is governed by the LICENSE file distributed with the project.
+
+3. READ-ONLY DESIGN
+The diagnostic is designed not to modify controller files, Windows services, drivers, or registry values. Diagnostic results are informational and may be incomplete or incorrect on unusual, damaged, unsupported, or modified systems.
+
+4. NO WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
+
+5. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE AUTHORS, CONTRIBUTORS, AND DISTRIBUTORS SHALL NOT BE LIABLE FOR LOSS OF DATA, LOSS OF BUSINESS, LOSS OF PROFITS, EQUIPMENT DAMAGE, SERVICE INTERRUPTION, OR OTHER DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL LOSS ARISING FROM INSTALLATION OR USE OF THE SOFTWARE.
+
+6. BACKUPS AND PROFESSIONAL DATA
+Users are responsible for maintaining appropriate backups of field, survey, engineering, and project data. A diagnostic result does not replace verification of critical project data or equipment operation.
+
+7. THIRD-PARTY PRODUCTS AND TRADEMARKS
+Trimble and related product names are trademarks of Trimble Inc. or its affiliates. They are used only to identify compatible equipment. VP Field Diagnostic is an independent project and is not affiliated with, endorsed by, sponsored by, or supported by Trimble Inc.
+
+8. APPLICABLE LAW
+Nothing in these terms excludes or limits rights or liabilities that cannot lawfully be excluded or limited under applicable law.
+
+This text is intended for project use and should receive a final legal review before a stable public release.
