@@ -1,0 +1,31 @@
+name: Build Alpha
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restore
+        run: dotnet restore
+      - name: Publish x86 self-contained
+        run: dotnet publish -c Release -r win-x86 --self-contained true -p:PublishSingleFile=true -o publish
+      - name: Upload portable build
+        uses: actions/upload-artifact@v4
+        with:
+          name: VP-Field-Diagnostic-Alpha-0.1-win-x86
+          path: |
+            publish/**
+            LICENSE
+            EULA.txt
+            DISCLAIMER.md
+            TRADEMARKS.md
